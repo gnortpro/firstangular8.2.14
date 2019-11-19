@@ -5,6 +5,7 @@ import {Component, OnInit} from '@angular/core';
   templateUrl: './header-component.component.html'
 })
 export class HeaderComponentComponent implements OnInit {
+  numberProducts = 30;
   constructor() {}
 
   ngOnInit() {}
