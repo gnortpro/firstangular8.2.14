@@ -1,6 +1,8 @@
 <main>
-  <app-header-component></app-header-component>
-  <app-product-component></app-product-component>
+  <app-header-component [inCartTotal]="inCart"></app-header-component>
+  <app-product-component
+    (pushProduct)="consoleProducts($event)"
+  ></app-product-component>
   <app-checkout-component></app-checkout-component>
   <app-footer-component></app-footer-component>
 </main>
