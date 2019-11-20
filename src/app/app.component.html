@@ -1,7 +1,8 @@
 <main>
   <app-header-component [inCartTotal]="inCart"></app-header-component>
   <app-product-component
-    (pushProduct)="consoleProducts($event)"
+    (pushQuantity)="pushQuantityParent($event)"
+    (pushPrice)="pushPriceParent($event)"
   ></app-product-component>
   <app-checkout-component></app-checkout-component>
   <app-footer-component></app-footer-component>

@@ -5,6 +5,7 @@
       "name": "PRODUCT ITEM NUMBER 1",
       "price": 10.1,
       "slug": "product-1",
+      "tax": 2,
       "quantity": 0,
       "thumb": "https://via.placeholder.com/200x150",
       "description": "Description for product item number 1"
@@ -13,6 +14,7 @@
       "id": 2,
       "name": "PRODUCT ITEM NUMBER 2",
       "price": 5.5,
+      "tax": 0,
       "slug": "product-2",
       "quantity": 0,
       "thumb": "https://via.placeholder.com/200x150",

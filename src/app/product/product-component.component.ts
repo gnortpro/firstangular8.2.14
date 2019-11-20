@@ -8,26 +8,35 @@ import { ProductService } from "../services/products/product.service";
 export class ProductComponent implements OnInit {
   constructor(private productService: ProductService) {} // khai báo private service để get data từ service api hoặc json
   @Input() childProducts: string; // Nhận biến từ parent
-  @Output() pushProduct = new EventEmitter(); // Đẩy biến lên parent
+  @Output() pushQuantity = new EventEmitter(); // Đẩy biến lên parent
+  @Output() pushPrice = new EventEmitter(); // Đẩy biến lên parent
   // quantity: Number;
   products; // biến any
   onButtonClick() {
     // this.pushProduct.emit(this.products);
   }
   onChangeQuantity(productId: Number, inputElement: HTMLInputElement) {
+    let price = 0;
     let product = this.products.find(product => product.id === productId);
+    let inputQuantity = parseInt(inputElement.value); // get quantity from user input
     if (product) {
-      product.quantity = parseInt(inputElement.value) || 0;
+      product.quantity = inputQuantity || 0;
+      price = product.quantity * product.price;
+      this.totalPrice(price);
     }
     this.totalCart();
   }
   totalCart() {
     let total = 0;
-    total = this.products.reduce((quantity, product, index, products) => {
+    total = this.products.reduce((quantity, product) => {
       return (quantity += product.quantity);
     }, 0);
     // console.log(total);
-    this.pushProduct.emit(total);
+    this.pushQuantity.emit(total);
+  }
+  totalPrice(price) {
+    console.log(price);
+    this.pushPrice.emit(price);
   }
 
   ngOnInit() {

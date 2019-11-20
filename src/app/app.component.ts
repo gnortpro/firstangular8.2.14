@@ -7,11 +7,13 @@ import { Component } from "@angular/core";
 export class AppComponent {
   title = "shoppping-cart";
   inCart: Number = 0;
-  consoleProducts(total) {
+  totalPrice: Number = 0;
+  pushQuantityParent(total) {
     this.inCart = total;
-    // let quantity = products.map((product, index, products) => {
-    //   return product.quantity;
-    // });
-    // console.log(quantity);
+  }
+  pushPriceParent(price) {
+    console.log(price);
+    // this.totalPrice += price;
+    this.totalPrice = price;
   }
 }
