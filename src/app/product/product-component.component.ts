@@ -12,9 +12,6 @@ export class ProductComponent implements OnInit {
   @Output() pushPrice = new EventEmitter(); // Đẩy biến lên parent
   // quantity: Number;
   products; // biến any
-  onButtonClick() {
-    // this.pushProduct.emit(this.products);
-  }
   onChangeQuantity(productId: Number, inputElement: HTMLInputElement) {
     let price = 0;
     let product = this.products.find(product => product.id === productId);
