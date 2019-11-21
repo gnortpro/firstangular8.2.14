@@ -135,7 +135,8 @@ header .count {
 
 .col,
 .quantity,
-.remove {
+.remove,
+.favorite-list {
   float: left;
 }
 
@@ -167,10 +168,22 @@ header .count {
 .detail .price {
   font-size: 1.5rem;
 }
+.favorite-list i {
+  height: 60px;
+}
+.favorite-list button {
+  background: none;
+  color: black;
+  border: none;
+}
 
+.favorite-list button:after {
+  display: none;
+}
 .quantity,
-.remove {
-  width: 50%;
+.remove,
+.favorite-list {
+  width: 33.33%;
   text-align: center;
 }
 
@@ -362,4 +375,12 @@ body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.noitems {
+  height: 200px;
+  background: cornflowerblue;
+  color: white;
+  text-align: center;
+  font-size: 30px;
+  padding-top: 50px;
 }

@@ -6,11 +6,11 @@ import { Component } from "@angular/core";
 }) // đánh dấu cho angular biết là 1 component. nếu ko có sẽ là class bình thường
 export class AppComponent {
   title = "shoppping-cart";
-  inCart: Number = 2;
+  inCart: 2;
   totalPrice;
   totalTax;
   totalPriceTax;
-  promoPrice: Number;
+  promoPrice: number;
   roundNum(num) {
     let n = parseFloat(num);
     num = Math.round(n * 1000) / 1000;
@@ -28,8 +28,8 @@ export class AppComponent {
       let tax_product = product.tax * product.quantity;
       taxs.push(tax_product);
     });
-    this.totalPrice = prices.reduce((a, b) => a + b, 0);
-    this.totalTax = taxs.reduce((a, b) => a + b, 0);
+    this.totalPrice = this.roundNum(prices.reduce((a, b) => a + b, 0));
+    this.totalTax = this.roundNum(taxs.reduce((a, b) => a + b, 0));
     this.totalPriceTax = this.roundNum(this.totalPrice + this.totalTax);
   }
   pushPromoPriceParent(promoPrice) {

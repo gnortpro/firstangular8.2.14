@@ -11,14 +11,14 @@
   <div class="summary">
     <ul>
       <li>
-        Subtotal <span>${{ totalPrice }}</span>
+        Subtotal <span>{{ totalPrice | currency }}</span>
       </li>
       <li>
-        Tax <span>${{ totalTax }}</span>
+        Tax <span>{{ totalTax | currency }}</span>
       </li>
       <li class="total">
         Total
-        <span>${{ totalPriceTax }}</span>
+        <span>{{ totalPriceTax | currency }}</span>
       </li>
     </ul>
   </div>

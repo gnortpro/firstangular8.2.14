@@ -1,6 +1,7 @@
 <main>
   <app-header-component [inCartTotal]="inCart"></app-header-component>
   <app-product-component
+    [inCartTotal]="inCart"
     (pushProduct)="pushProductParent($event)"
   ></app-product-component>
   <app-checkout-component

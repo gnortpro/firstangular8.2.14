@@ -8,9 +8,10 @@ import { ProductService } from "../services/products/product.service";
 export class ProductComponent implements OnInit {
   constructor(private productService: ProductService) {} // khai báo private service để get data từ service api hoặc json
   // @Input() childProducts: string; // Nhận biến từ parent
+  @Input() inCartTotal: number;
   @Output() pushProduct = new EventEmitter(); // Đẩy biến lên parent
   products; // biến any
-  onChangeQuantity(productId: Number, inputElement: HTMLInputElement) {
+  onChangeQuantity(productId: number, inputElement: HTMLInputElement) {
     // let price = 0;
     let product = this.products.find(product => product.id === productId);
     let inputQuantity = parseInt(inputElement.value); // get quantity from user input
@@ -23,7 +24,7 @@ export class ProductComponent implements OnInit {
       this.commitProduct(this.products);
     }
   }
-  onRemoveProduct(productId: Number) {
+  onRemoveProduct(productId: number) {
     let foundIndex = this.products.findIndex(
       product => product.id == productId
     );

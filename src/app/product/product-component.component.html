@@ -1,5 +1,5 @@
 <section class="container">
-  <ul class="products">
+  <ul *ngIf="inCartTotal > 0" class="products">
     <li *ngFor="let item of products" class="row">
       <div class="col left">
         <div class="thumbnail">
@@ -14,7 +14,7 @@
           <div class="description">
             {{ item.description }}
           </div>
-          <div class="price">${{ item.price }}</div>
+          <div class="price">{{ item.price | currency }}</div>
         </div>
       </div>
 
@@ -29,6 +29,7 @@
             step="1"
             placeholder="1"
             value="1"
+            min="0"
           />
         </div>
 
@@ -49,7 +50,17 @@
             ></polygon>
           </svg>
         </div>
+        <div class="favorite-list">
+          <button>
+            <i class="material-icons">
+              favorite
+            </i>
+          </button>
+        </div>
       </div>
     </li>
   </ul>
+  <div class="noitems" *ngIf="inCartTotal <= 0">
+    No Items In Cart
+  </div>
 </section>
