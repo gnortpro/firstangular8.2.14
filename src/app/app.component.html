@@ -1,9 +1,13 @@
 <main>
   <app-header-component [inCartTotal]="inCart"></app-header-component>
   <app-product-component
-    (pushQuantity)="pushQuantityParent($event)"
-    (pushPrice)="pushPriceParent($event)"
+    (pushProduct)="pushProductParent($event)"
   ></app-product-component>
-  <app-checkout-component></app-checkout-component>
+  <app-checkout-component
+    [totalPrice]="totalPrice"
+    [totalTax]="totalTax"
+    [totalPriceTax]="totalPriceTax"
+    (pushPromoPrice)="pushPromoPriceParent($event)"
+  ></app-checkout-component>
   <app-footer-component></app-footer-component>
 </main>

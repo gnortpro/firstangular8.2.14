@@ -1,7 +1,11 @@
 <section class="container">
   <div class="promotion">
     <label for="promo-code">Have A Promo Code?</label>
-    <input type="text" id="promo-code" /> <button type="button"></button>
+    <input #promoCodeElement type="text" id="promo-code" />
+    <button
+      type="button"
+      (click)="onPromoButton(promoCodeElement, totalPriceTax)"
+    ></button>
   </div>
 
   <div class="summary">
@@ -9,12 +13,19 @@
       <li>
         Subtotal <span>${{ totalPrice }}</span>
       </li>
-      <li>Tax <span>$5.00</span></li>
-      <li class="total">Total <span>$26.97</span></li>
+      <li>
+        Tax <span>${{ totalTax }}</span>
+      </li>
+      <li class="total">
+        Total
+        <span>${{ totalPriceTax }}</span>
+      </li>
     </ul>
   </div>
 
   <div class="checkout">
-    <button type="button">Check Out</button>
+    <button type="button" (click)="onCheckoutButton()">
+      Check Out
+    </button>
   </div>
 </section>

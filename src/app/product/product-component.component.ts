@@ -7,36 +7,37 @@ import { ProductService } from "../services/products/product.service";
 })
 export class ProductComponent implements OnInit {
   constructor(private productService: ProductService) {} // khai báo private service để get data từ service api hoặc json
-  @Input() childProducts: string; // Nhận biến từ parent
-  @Output() pushQuantity = new EventEmitter(); // Đẩy biến lên parent
-  @Output() pushPrice = new EventEmitter(); // Đẩy biến lên parent
-  // quantity: Number;
+  // @Input() childProducts: string; // Nhận biến từ parent
+  @Output() pushProduct = new EventEmitter(); // Đẩy biến lên parent
   products; // biến any
   onChangeQuantity(productId: Number, inputElement: HTMLInputElement) {
-    let price = 0;
+    // let price = 0;
     let product = this.products.find(product => product.id === productId);
     let inputQuantity = parseInt(inputElement.value); // get quantity from user input
     if (product) {
       product.quantity = inputQuantity || 0;
-      price = product.quantity * product.price;
-      this.totalPrice(price);
+      let foundIndex = this.products.findIndex(
+        product => product.id == productId
+      );
+      this.products[foundIndex] = product;
+      this.commitProduct(this.products);
     }
-    this.totalCart();
   }
-  totalCart() {
-    let total = 0;
-    total = this.products.reduce((quantity, product) => {
-      return (quantity += product.quantity);
-    }, 0);
-    // console.log(total);
-    this.pushQuantity.emit(total);
+  onRemoveProduct(productId: Number) {
+    let foundIndex = this.products.findIndex(
+      product => product.id == productId
+    );
+    if (foundIndex > -1) {
+      this.products.splice(foundIndex, 1);
+      this.commitProduct(this.products);
+    }
   }
-  totalPrice(price) {
-    console.log(price);
-    this.pushPrice.emit(price);
+  commitProduct(product) {
+    this.pushProduct.emit(product);
   }
 
   ngOnInit() {
     this.products = this.productService.getProducts(); // get Parent data qua services
+    this.commitProduct(this.productService.getProducts());
   }
 }

@@ -6,14 +6,35 @@ import { Component } from "@angular/core";
 }) // đánh dấu cho angular biết là 1 component. nếu ko có sẽ là class bình thường
 export class AppComponent {
   title = "shoppping-cart";
-  inCart: Number = 0;
-  totalPrice: Number = 0;
-  pushQuantityParent(total) {
-    this.inCart = total;
+  inCart: Number = 2;
+  totalPrice;
+  totalTax;
+  totalPriceTax;
+  promoPrice: Number;
+  roundNum(num) {
+    let n = parseFloat(num);
+    num = Math.round(n * 1000) / 1000;
+    return num;
   }
-  pushPriceParent(price) {
-    console.log(price);
-    // this.totalPrice += price;
-    this.totalPrice = price;
+  pushProductParent(products) {
+    let prices = [];
+    let taxs = [];
+    this.inCart = products.reduce((p, product) => {
+      return (p += product.quantity);
+    }, 0);
+    products.forEach(product => {
+      let price_product = product.price * product.quantity;
+      prices.push(price_product);
+      let tax_product = product.tax * product.quantity;
+      taxs.push(tax_product);
+    });
+    this.totalPrice = prices.reduce((a, b) => a + b, 0);
+    this.totalTax = taxs.reduce((a, b) => a + b, 0);
+    this.totalPriceTax = this.roundNum(this.totalPrice + this.totalTax);
+  }
+  pushPromoPriceParent(promoPrice) {
+    if (promoPrice > 0) {
+      this.totalPriceTax = this.roundNum(this.totalPriceTax - promoPrice);
+    }
   }
 }
