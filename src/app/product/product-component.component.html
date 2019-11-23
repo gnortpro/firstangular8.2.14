@@ -14,7 +14,7 @@
           <div class="description">
             {{ item.description }}
           </div>
-          <div class="price">{{ item.price | currency }}</div>
+          <div class="price">{{ item.price | currency: "VND":"symbol" }}</div>
         </div>
       </div>
 
@@ -28,7 +28,6 @@
             class="quantity"
             step="1"
             placeholder="1"
-            value="1"
             min="0"
           />
         </div>

@@ -2,23 +2,23 @@
   "data": [
     {
       "id": 1,
-      "name": "PRODUCT ITEM NUMBER 1",
-      "price": 10.1,
+      "name": "Xe đạp 1",
+      "price": 5000000,
       "slug": "product-1",
-      "tax": 2,
+      "tax": 200000,
       "quantity": 1,
-      "thumb": "https://via.placeholder.com/200x150",
-      "description": "Description for product item number 1"
+      "thumb": "/assets/xe1.jpg",
+      "description": "Mô tả xe đạp 1"
     },
     {
       "id": 2,
-      "name": "PRODUCT ITEM NUMBER 2",
-      "price": 5.5,
-      "tax": 0,
+      "name": "Xe đạp 2",
+      "price": 9600000,
+      "tax": 50000,
       "slug": "product-2",
       "quantity": 1,
-      "thumb": "https://via.placeholder.com/200x150",
-      "description": "Description for product item number 2"
+      "thumb": "/assets/xe2.jpg",
+      "description": "Mô tả xe đạp 2"
     }
   ]
 }

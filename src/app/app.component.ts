@@ -6,7 +6,7 @@ import { Component } from "@angular/core";
 }) // đánh dấu cho angular biết là 1 component. nếu ko có sẽ là class bình thường
 export class AppComponent {
   title = "shoppping-cart";
-  inCart: 2;
+  inCart: 0;
   totalPrice;
   totalTax;
   totalPriceTax;
